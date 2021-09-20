@@ -18,7 +18,7 @@ import 'package:flutter/material.dart';
 ///
 ///  * [DataTable], which is not paginated.
 ///  * <https://material.io/go/design-data-tables#data-tables-tables-within-cards>
-class PaginatedDataTable extends StatefulWidget {
+class CustomPaginatedDataTable extends StatefulWidget {
   /// Creates a widget describing a paginated [DataTable] on a [Card].
   ///
   /// The [header] should give the card's header, typically a [Text] widget.
@@ -38,8 +38,8 @@ class PaginatedDataTable extends StatefulWidget {
   ///
   /// The [source] must not be null. The [source] should be a long-lived
   /// [DataTableSource]. The same source should be provided each time a
-  /// particular [PaginatedDataTable] widget is created; avoid creating a new
-  /// [DataTableSource] with each new instance of the [PaginatedDataTable]
+  /// particular [CustomPaginatedDataTable] widget is created; avoid creating a new
+  /// [DataTableSource] with each new instance of the [CustomPaginatedDataTable]
   /// widget unless the data table really is to now show entirely different
   /// data from a new source.
   ///
@@ -47,9 +47,9 @@ class PaginatedDataTable extends StatefulWidget {
   /// both have defaults, though, so don't have to be specified).
   ///
   /// Themed by [DataTableTheme]. [DataTableThemeData.decoration] is ignored.
-  /// To modify the border or background color of the [PaginatedDataTable], use
+  /// To modify the border or background color of the [CustomPaginatedDataTable], use
   /// [CardTheme], since a [Card] wraps the inner [DataTable].
-  PaginatedDataTable({
+  CustomPaginatedDataTable({
     Key? key,
     this.header,
     this.actions,
@@ -216,8 +216,8 @@ class PaginatedDataTable extends StatefulWidget {
   /// The data source which provides data to show in each row. Must be non-null.
   ///
   /// This object should generally have a lifetime longer than the
-  /// [PaginatedDataTable] widget itself; it should be reused each time the
-  /// [PaginatedDataTable] constructor is called.
+  /// [CustomPaginatedDataTable] widget itself; it should be reused each time the
+  /// [CustomPaginatedDataTable] constructor is called.
   final DataTableSource source;
 
   /// {@macro flutter.widgets.scrollable.dragStartBehavior}
@@ -234,13 +234,13 @@ class PaginatedDataTable extends StatefulWidget {
   final bool isShowScrollbar;
 
   @override
-  PaginatedDataTableState createState() => PaginatedDataTableState();
+  CustomPaginatedDataTableState createState() => CustomPaginatedDataTableState();
 }
 
-/// Holds the state of a [PaginatedDataTable].
+/// Holds the state of a [CustomPaginatedDataTable].
 ///
 /// The table can be programmatically paged using the [pageTo] method.
-class PaginatedDataTableState extends State<PaginatedDataTable> {
+class CustomPaginatedDataTableState extends State<CustomPaginatedDataTable> {
   late int _firstRowIndex;
   late int _rowCount;
   late bool _rowCountApproximate;
@@ -256,7 +256,7 @@ class PaginatedDataTableState extends State<PaginatedDataTable> {
   }
 
   @override
-  void didUpdateWidget(PaginatedDataTable oldWidget) {
+  void didUpdateWidget(CustomPaginatedDataTable oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.source != widget.source) {
       oldWidget.source.removeListener(_handleDataSourceChanged);
